@@ -1,16 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><title>Campus Notice Board</title>
-<style>body{font-family:sans-serif;max-width:600px;margin:60px auto}li{margin:6px 0}</style></head>
-<body>
-  <h1>Campus Notice Board</h1>
-  <p>If you can see this in your browser, you deployed a live service. 🎉</p>
-  <ul id="notices"><li>loading…</li></ul>
-  <script>
-    fetch("/api/notices").then(r=>r.json()).then(list=>{
-      document.getElementById("notices").innerHTML =
-        list.map(n=>`<li>#${n.id} — ${n.text}</li>`).join("");
-    });
-  </script>
-</body>
-</html>
+const express = require("express");
+const morgan  = require("morgan");
+const fs = require("fs");
+const path = require("path");
+
+const app = express();
+
+const logDir = path.join(__dirname, "logs");
+fs.mkdirSync(logDir, { recursive: true });
+const accessLog = fs.createWriteStream(path.join(logDir, "access.log"), { flags: "a" });
+app.use(morgan("combined", { stream: accessLog }));
+app.use(morgan("dev"));
+
+app.use(express.static(path.join(__dirname, "public")));
+app.get("/health", (_, res) => res.json({ ok: true, time: new Date().toISOString() }));
+app.get("/api/notices", (_, res) => res.json([
+  { id: 1, text: "Welcome to CSTU Cyber Camp" },
+  { id: 2, text: "Today you learn to deploy a service" }
+]));
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`campus-notice-board running on :${PORT}`));
