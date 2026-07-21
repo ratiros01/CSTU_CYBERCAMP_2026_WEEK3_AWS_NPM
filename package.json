@@ -1,2 +1,13 @@
-node_modules/
-logs/*.log
+{
+  "name": "campus-notice-board",
+  "version": "1.0.0",
+  "description": "Deploy practice — a small Node app you run as a real service",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
+}
