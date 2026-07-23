@@ -92,3 +92,11 @@ you'll re-open port 3000.
 - A deployed web app writes an **access log** of every request — that log is
   evidence, and reading it is the analyst skill you'll practise next.
 
+
+---
+
+## Flags (Day 1 — 4 to collect)
+There are **four flags** hidden across today's milestones — cloning,
+installing, deploying, and reading logs. Each one is proof you actually did
+the step. Format: `CSTU{...}`. Your worksheet says which milestone each
+belongs to; finding *where* is part of the exercise.
