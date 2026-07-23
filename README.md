@@ -91,3 +91,4 @@ you'll re-open port 3000.
 - `npm install -g` installs a tool globally (pm2), vs local app dependencies.
 - A deployed web app writes an **access log** of every request — that log is
   evidence, and reading it is the analyst skill you'll practise next.
+
