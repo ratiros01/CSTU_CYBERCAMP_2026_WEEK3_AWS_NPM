@@ -4,7 +4,8 @@
   "description": "Deploy practice — a small Node app you run as a real service",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "node scripts/postinstall.js"
   },
   "dependencies": {
     "express": "^4.18.2",
